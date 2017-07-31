@@ -1,7 +1,7 @@
 # 강의실 대여 정보 공개 서비스
-Likelion 5th Hackathon 제출을 위한 팀입니다.
-주제 : 강의실 대여 정보 공개 서비스
-인원 : 4명, 최성욱, 안재영, 권태욱, 이성준
+Likelion 5th Hackathon 제출을 위한 팀입니다.<br>
+주제 : 강의실 대여 정보 공개 서비스<br>
+인원 : 최성욱, 안재영, 권태욱, 이성준
 
 ### version configuration
 * ruby -v `2.3.3` with `rbenv`
