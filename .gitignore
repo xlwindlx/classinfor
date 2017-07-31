@@ -23,5 +23,8 @@
 # enviroment
 /Gemfile.lock
 
-# Ignore application configuration
+# Ignore application configuration with figaro
 /config/application.yml
+
+# .idea files created by rubymine
+.idea/
