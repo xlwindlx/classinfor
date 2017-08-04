@@ -7,7 +7,9 @@ end
 
 # here for added gem list
 gem 'devise'
-gem 'rails_db', '<= 1.5.0'
+group :development do
+  gem 'rails_db', '<= 1.5.0'
+end
 gem 'pry'
 gem 'figaro'
 
