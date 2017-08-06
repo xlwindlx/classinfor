@@ -5,18 +5,37 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-# here for added gem list
+# parse
+gem 'nokogiri'
+gem 'mechanize'
+gem 'selenium'
+gem 'wombat'
+
+# account
 gem 'devise'
-group :development do
-  gem 'rails_db', '<= 1.5.0'
-end
+gem 'devise-i18n'
+gem 'cancancan'
+gem 'rolify'
+
+# shell
+gem 'devise'
 gem 'pry'
+gem 'pry-rails'
+
+# aws gem
 gem 'figaro'
+gem 'fog-aws'
+gem 'carrierwave'
+
+# frontend
+gem 'bootstrap-sass'
+gem 'devise-bootstrap-views'
+gem 'simple_form'
+gem 'font-awesome-rails'
+gem 'better_errors'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -27,7 +46,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -45,6 +63,9 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  # DB
+  gem 'rails_db', '<= 1.5.0'
+  gem 'sqlite3'
 end
 
 group :development do
