@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Timetable Majors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @timetable_majors.each do |timetable_major| %>
+      <tr>
+        <td><%= link_to 'Show', timetable_major %></td>
+        <td><%= link_to 'Edit', edit_timetable_major_path(timetable_major) %></td>
+        <td><%= link_to 'Destroy', timetable_major, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Timetable Major', new_timetable_major_path %>

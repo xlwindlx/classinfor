@@ -34,6 +34,7 @@ gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'better_errors'
 
+gem 'wdm', '>= 0.1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
 # Use Puma as the app server

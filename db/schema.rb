@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170804051236) do
+ActiveRecord::Schema.define(version: 20170808080917) do
 
   create_table "buildings", force: :cascade do |t|
     t.string   "loc"
@@ -61,6 +61,34 @@ ActiveRecord::Schema.define(version: 20170804051236) do
   end
 
   create_table "time_classes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "timetable_majors", force: :cascade do |t|
+    t.string   "div"
+    t.string   "title"
+    t.integer  "grades"
+    t.integer  "grade"
+    t.string   "subject"
+    t.string   "proffesion"
+    t.string   "day"
+    t.string   "time"
+    t.string   "classroom"
+    t.string   "validation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "timetable_normals", force: :cascade do |t|
+    t.string   "div"
+    t.string   "title"
+    t.integer  "grades"
+    t.string   "day"
+    t.string   "time"
+    t.string   "proffesion"
+    t.string   "classroom"
+    t.string   "validation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
