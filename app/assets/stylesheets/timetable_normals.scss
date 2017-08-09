@@ -1,3 +1,41 @@
 // Place all the styles related to the timetable_normals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.query_field
+{
+  background-color: #cccccc;
+  border-color: #aaaaaa;
+  table
+  {
+    margin:auto;
+    padding:auto;
+  }
+  th
+  {
+    // text-align:center;
+  }
+  th, td
+  {
+    //padding: 5px;
+  }
+  table, th, tr, td
+  {
+    //border: 1px solid black;
+  }
+  //tr:nth-child(even){background-color: #f2f2f2}
+
+  input.text
+  {
+    width: auto;
+    height: auto;
+  }
+  input.text.placeholder
+  {
+    text-align:center;
+  }
+}
+
+.center
+{
+  text-align: center;
+}

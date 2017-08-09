@@ -5,10 +5,10 @@
   <ul class="log-stat nav-ul">
     <% if user_signed_in? %>
         <li><%= current_user.email %>님</li>
-        <li><%= link_to '로그아웃' %></li>
+        <li><%= link_to '로그아웃', destroy_user_session_path %></li>
     <% else %>
-        <li><%= link_to '가입하기', '#'%></li>
-        <li><%= link_to '로그인', '#' %></li>
+        <li><%= link_to '가입하기', new_user_session_path %></li>
+        <li><%= link_to '로그인', user_session_path %></li>
     <% end %>
 
   </ul>
@@ -25,7 +25,7 @@
 <header class="header">
   <h1>Classinfoapp</h1>
     <ul class="nav-ul">
-      <li><%=link_to 'HOME', '#' %></li>
+      <li><%=link_to 'HOME', root_path %></li>
       <li><%=link_to '근처빈강의실찾기', '#' %></li>
       <li><%=link_to '강의실대여정보보기', '#' %></li>
     </ul>
