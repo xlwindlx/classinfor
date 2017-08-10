@@ -12,6 +12,7 @@ group :development do
 end
 gem 'pry'
 gem 'figaro'
+gem 'roo'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
