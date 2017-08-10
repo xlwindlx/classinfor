@@ -10,6 +10,7 @@ gem 'nokogiri'
 gem 'mechanize'
 gem 'selenium'
 gem 'wombat'
+gem 'roo'
 
 # account
 gem 'devise'

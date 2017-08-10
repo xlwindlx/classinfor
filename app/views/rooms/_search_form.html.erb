@@ -1,0 +1,4 @@
+<%= form_tag({ controller: :home, action: :index },  method: :get, class: :search) do %>
+  건물: <%= text_field_tag :keywd, '', size: 30 %>
+  <%= submit_tag '검색' %>
+<% end %>
