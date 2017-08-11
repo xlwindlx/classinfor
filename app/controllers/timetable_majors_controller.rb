@@ -4,7 +4,8 @@ class TimetableMajorsController < ApplicationController
   # GET /timetable_majors
   # GET /timetable_majors.json
   def index
-    @timetable_majors = TimetableMajor.all
+    # @timetable_majors = TimetableMajor.all
+    @timetable_majors = TimetableMajor.page(params[:page])
   end
 
   # GET /timetable_majors/1

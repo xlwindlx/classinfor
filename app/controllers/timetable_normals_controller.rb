@@ -4,7 +4,8 @@ class TimetableNormalsController < ApplicationController
   # GET /timetable_normals
   # GET /timetable_normals.json
   def index
-    @timetable_normals = TimetableNormal.all
+    # @timetable_normals = TimetableNormal.all
+    @timetable_normals = TimetableNormal.page(params[:page])
   end
 
   # GET /timetable_normals/1

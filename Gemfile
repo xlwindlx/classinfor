@@ -29,11 +29,16 @@ gem 'fog-aws'
 gem 'carrierwave'
 
 # frontend
-gem 'bootstrap-sass'
-gem 'devise-bootstrap-views'
-gem 'simple_form'
-gem 'font-awesome-rails'
-gem 'better_errors'
+  # bootstrap
+  gem 'bootstrap-sass'
+  gem 'devise-bootstrap-views'
+  gem 'simple_form'
+  gem 'font-awesome-rails'
+  gem 'better_errors'
+
+  # pagination
+  gem 'kaminari'
+  gem 'kaminari-i18n'
 
 gem 'wdm', '>= 0.1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -12,7 +12,7 @@ document.addEventListener 'turbolinks:load', ->
       $fieldtext.val("")
     return
 
-  $("#div, #subject, #grade, #title, #grades, #prof, #proffesion, #day, #time, #classroom").click ->
+  $("#div, #subject, #grade, #title, #grades, #proffesion, #day, #time, #classroom").click ->
     check_it(this)
 
   return
