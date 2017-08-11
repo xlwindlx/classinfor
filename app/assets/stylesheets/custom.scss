@@ -1,0 +1,30 @@
+.search {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-main {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f7f7f7;
+}
+.search-building {
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  align-content: center;
+  flex-wrap: wrap;
+  div {
+    margin: 0.5em 0.5em;
+    line-height: 1.0;
+  }
+}
+#select_building {
+  margin: 1em 1em;
+}
+.search-department {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}

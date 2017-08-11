@@ -1,4 +1,17 @@
-<%= form_tag({ controller: :home, action: :index },  method: :get, class: :search) do %>
-  건물: <%= text_field_tag :keywd, '', size: 30 %>
-  <%= submit_tag '검색' %>
+<%= form_tag({ controller: :home, action: :index },  method: :get, class: 'search-main2') do %>
+    <div class="search-main">
+      <div class="search-building">
+      <% Building.all.each do |d| %>
+            <label><%= check_box_tag 'building', d.number, false, class: 'accept_building' %><%= d.number %></label>
+      <% end %>
+      </div>
+      <div class="search-department">
+        <% Department.all.each do |d| %>
+            <label><%= check_box_tag 'department', d.id, true, class: 'accept_department' %><%= d.name %></label>
+        <% end %>
+      </div>
+    </div>
+    <div>
+    <%= submit_tag '검색하기' %>
+    </div>
 <% end %>
