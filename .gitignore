@@ -28,3 +28,7 @@
 
 # .idea files created by rubymine
 .idea/
+
+.DS_Store
+~$*.xls*
+#seoul.xlsx

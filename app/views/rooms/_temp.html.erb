@@ -1,0 +1,48 @@
+__END__
+<%= form_tag({ controller: :home, action: :index },  method: :get, class: 'search-home') do %>
+    <div class="search">
+
+      <div class="search1">
+        건물: <%= text_field_tag :building, '', size: 30 %>
+      </div>
+
+      <div class="serach2">
+        <p>건물: </p>
+        <% Building.all.each do |d| %>
+            <label><%= check_box_tag :select_building, d.number %><%= d.number %></label><br>
+        <% end %>
+      </div>
+
+      <div class="serach3">
+        <p>부서: </p>
+        <% Department.all.each do |d| %>
+            <label><%= check_box_tag :select_department, checked = true, d.name %><%= d.name %></label><br>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div>
+      <label>텍스트<%= text_field_tag :search %></label><br>
+      <label>검색<%= search_field_tag :search %></label><br>
+      <label>숫자<%= number_field_tag :search %></label><br>
+      <label>date<%= date_field_tag :search %></label><br>
+      <label>datetime<%= datetime_field_tag :search %></label><br>
+      <label>time<%= time_field_tag :search %></label><br>
+      <label>datetime_local<%= datetime_local_field_tag :search %></label><br>
+      <label>month<%= month_field_tag :search %></label><br>
+      <%= select_tag :department, ['1', '2', '3'] %>
+    </div>
+    <%= submit_tag 'department' %>
+<% end %>
+<%= form_for @department, url: root_path do |f| %>
+    <%= f.select :name, ['1', '2', '3'] %>
+    <%= f.collection_select :name, Department.all, :id, :name, prompt: true %>
+    <div class="">
+      <%= f.collection_check_boxes(:name, Department.all, :id, :name) %><br />
+    </div>
+    <%= f.submit 'department' %>
+<% end %>
+<%= form_for TimeClass.new, url: root_path do |f| %>
+    빌리는 시간<%= f.time_select :created_at %>
+<% end %>
