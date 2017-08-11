@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 20170808080917) do
 
   create_table "buildings", force: :cascade do |t|
-    t.string   "loc"
+    t.integer  "number"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20170808080917) do
   create_table "lectures", force: :cascade do |t|
     t.string   "name"
     t.string   "professor"
+    t.integer  "semaster"
     t.integer  "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,23 +45,31 @@ ActiveRecord::Schema.define(version: 20170808080917) do
   create_table "room_comments", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "content"
+    t.integer  "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_room_comments_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
+    t.integer  "building"
+    t.string   "department"
     t.integer  "floor"
-    t.integer  "loc"
+    t.string   "loc"
     t.integer  "capacity"
     t.integer  "level"
     t.integer  "building_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["building_id"], name: "index_rooms_on_building_id"
+    t.integer  "department_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "time_classes", force: :cascade do |t|
+    t.string   "week"
+    t.integer  "st"
+    t.integer  "fi"
+    t.integer  "lecture_id"
+    t.integer  "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

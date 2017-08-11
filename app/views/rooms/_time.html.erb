@@ -1,0 +1,28 @@
+<%= @room.building.number %>
+<%= @room.loc %>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>월</th>
+      <th>화</th>
+      <th>수</th>
+      <th>목</th>
+      <th>금</th>
+      <th>토</th>
+      <th>일</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% for i in 9..22 %>
+    <tr>
+      <td><%= i.to_s + '시' %></td>
+      <% for j in ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] do %>
+        <td><%= @room.time_classes.where('week = ? AND st <= ? AND fi >= ?', j, i, i+1).exists? ? 'O' : 'X'%></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+
+</table>
