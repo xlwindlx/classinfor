@@ -1,7 +1,8 @@
 
 <%= form_for(Building.new, url: root_path) do |f| %>
     <div class="h">
-      근처 빈강의실 검색하기: 내 위치는 <%= f.collection_select(:number, Building.all, :id, :number) %>동
+      <%= hidden_field_tag 'search_type', 'pos' %>
+      근처 빈강의실 <%= submit_tag '검색하기'%>: 내 위치는 <%= f.collection_select(:number, Building.all, :id, :number) %>동
       <%= select_tag :floor, options_for_select([ "1층", "2층" ], "1층") %> 입니다.
     </div>
 

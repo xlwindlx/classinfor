@@ -1,3 +1,9 @@
+<% if @a %>
+    위치기반 검색 : <%= @a %>동<%= @b %>
+<% end %>
+<% if @c %>
+    부서기반 검색 : d<%= @c %> b<%= @b %> f<%= @e %>
+<% end %>
 <%= render 'rooms/search_form' %>
 <%= render 'rooms/search_pos' %>
 <%= render 'rooms/rooms' %>
