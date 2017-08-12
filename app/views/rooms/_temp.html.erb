@@ -1,4 +1,3 @@
-__END__
 <%= form_tag({ controller: :home, action: :index },  method: :get, class: 'search-home') do %>
     <div class="search">
 
@@ -45,4 +44,8 @@ __END__
 <% end %>
 <%= form_for TimeClass.new, url: root_path do |f| %>
     빌리는 시간<%= f.time_select :created_at %>
+<% end %>
+<%= form_tag({ controller: :home, action: :index },  method: :get, class: 'search-home') do %>
+    time<%= time_field_tag :search %></label><br>
+    <%= submit_tag 'test' %>
 <% end %>

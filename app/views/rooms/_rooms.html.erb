@@ -5,16 +5,14 @@
   <table class="table">
     <thead>
       <tr>
-        <th>만든시각</th>
         <th>동</th>
         <th>호</th>
         <th>관리부서</th>
       </tr>
     </thead>
     <tbody>
-      <% @rooms.each do |r| %>
+      <% @p_rooms.each do |r| %>
       <tr>
-        <td><%= r.created_at %></td>
         <td><%= r.building.number %></td>
         <td><%= r.loc %></td>
         <td><%= r.department.name %></td>
@@ -23,4 +21,5 @@
     </tbody>
   </table>
   <% end %>
+  <%= paginate @p_rooms %>
 </div>

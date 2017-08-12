@@ -40,6 +40,10 @@ rooms.each do |r|
 
 end
 
+# lecture
+Lecture.create(name: '그냥수업', professor: '최성욱', grade: 4, semaster: 2017)
+TimeClass.create(lecture_id: 1, room_id: 1, st: 10, fi: 14, week: 'mon')
+TimeClass.create(lecture_id: 1, room_id: 1, st: 10, fi: 14, week: 'wed')
 __END__
 xlsx = Roo::Spreadsheet.open('./classinfo')
 building = [{ loc: '310', name: '경영경제관' }]

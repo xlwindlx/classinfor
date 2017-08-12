@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'timetable/major'
 
   devise_for :users
+  post '/' => 'home#index'
   root 'home#index'
 
   get 'home/building'

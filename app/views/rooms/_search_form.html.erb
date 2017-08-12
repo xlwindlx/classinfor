@@ -1,17 +1,27 @@
-<%= form_tag({ controller: :home, action: :index },  method: :get, class: 'search-main2') do %>
+<%= form_tag({ controller: :home, action: :index }, class: 'search-main2') do %>
+    <%= hidden_field_tag 'search_type', 'dep' %>
+
     <div class="search-main">
-      <div class="search-building">
-      <% Building.all.each do |d| %>
-            <label><%= check_box_tag 'building', d.number, false, class: 'accept_building' %><%= d.number %></label>
-      <% end %>
+      <div class="box-one">
+        <div class="search-building">
+          <% Building.all.each do |b| %>
+              <label><%= check_box_tag 'b[' + b.id.to_s + ']', b.number, false, class: 'accept_building' %><%= b.number %></label>
+          <% end %>
+        </div>
+        <div class="search-floor">
+          <% for i in ['B1','1','2','3','4','5','6','7','8','9','10','11','12'] do %>
+          <label><%= check_box_tag 'f[' + i.to_s + ']', i, false, class: 'floor_boxes' %><%= i.to_s %>층</label>
+          <% end %>
+        </div>
       </div>
+
       <div class="search-department">
         <% Department.all.each do |d| %>
-            <label><%= check_box_tag 'department', d.id, true, class: 'accept_department' %><%= d.name %></label>
+            <label><%= check_box_tag 'd['+ d.id.to_s + ']', d.id, true, class: 'accept_department' %><%= d.name %></label>
         <% end %>
       </div>
     </div>
-    <div>
-    <%= submit_tag '검색하기' %>
+    <div class="search-button">
+      위와 같은 조건으로 <%= submit_tag '검색하기' %>
     </div>
 <% end %>
