@@ -10,7 +10,11 @@ gem 'nokogiri'
 gem 'mechanize'
 gem 'selenium'
 gem 'wombat'
+gem 'rest-client'
+
+#excel
 gem 'roo'
+gem 'write_xlsx'
 
 # account
 gem 'devise'

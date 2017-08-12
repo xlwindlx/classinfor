@@ -6,8 +6,8 @@ user.each do |u|
   end
 end
 
-load "#{Rails.root}/db/test.rb"
-rooms = hello
+load "#{Rails.root}/db/cau_excel_to_data.rb"
+rooms = rooms_from_excel
 
 rooms.each do |r|
   # uniquness

@@ -5,9 +5,9 @@ def is_i?(str)
   !!(str =~ /\A[-+]?[0-9]+\z/)
 end
 
-def hello
+def rooms_from_excel
   script_folder_path = File.dirname(__FILE__)
-  xlsx = Roo::Spreadsheet.open("#{script_folder_path}/seoul.xlsx")
+  xlsx = Roo::Spreadsheet.open("#{script_folder_path}/cau_classinfo.xlsx")
   sheet = xlsx.sheet(0)
 
   buildings = sheet.column(2)
