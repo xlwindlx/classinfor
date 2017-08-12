@@ -22,7 +22,7 @@ gem 'i18n'
 gem 'devise-i18n'
 gem 'cancancan'
 gem 'rolify'
-
+gem 'activeadmin'
 # shell
 gem 'devise'
 gem 'pry'
