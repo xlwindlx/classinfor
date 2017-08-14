@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     @room = Room.find(1)
     @departments = Department.all
     @department = Department.find(1)
+    @buildings = Building.all
 
     if params.key?(:search_type)
       # 위치기반 검색

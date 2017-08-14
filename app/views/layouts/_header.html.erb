@@ -43,6 +43,7 @@
   </div>
 </header>
 <div class="blue-bar">
+  <% if user_signed_in? or true %>
   <div class="left">
     <p>
       (학교로고) DKU CAU
@@ -54,5 +55,5 @@
     <i class="fa fa-pencil-square-o" aria-hidden="true"> 빈강 </i>
     <i class="fa fa-search" aria-hidden="true"> 강의실 </i>
   </div>
-
+  <% end %>
 </div>
