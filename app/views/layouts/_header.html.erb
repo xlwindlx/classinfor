@@ -1,12 +1,5 @@
-<div class="color-bar">
-  <div class="a"></div>
-  <div class="b"></div>
-  <div class="c"></div>
-  <div class="d"></div>
-  <div class="e"></div>
-  <div class="f"></div>
-</div>
 <header class="main-header">
+  <!--삼등분|(1)|2|3|-->
   <div class="main-box-third log-stat">
     <ul class="log-stat">
       <% if user_signed_in? %>
@@ -22,15 +15,22 @@
       <% end %>
     </ul>
   </div>
-
+  <!--삼등분|1|(2)|3|-->
   <div class="main-box-third box-logo">
     <%= link_to root_path do %>
-        <h1 class="logo">Classinfo</h1>
-        <p class="version">beta 1.0</p>
+        <div class="small-color-bar">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <h1 class="logo">Classinfo </h1>
     <% end %>
-
+    <p class="version">beta 1.0</p>
   </div>
-
+  <!--삼등분|1|2|(3)|-->
   <div class="main-box-third func">
     <ul class="nav-ul">
       <li><%= link_to '#' do %>
@@ -42,37 +42,17 @@
     </ul>
   </div>
 </header>
-<div class="blue">
-  (학교로고)
-  DKU
-  CAU
-  <i class="fa fa-calendar" aria-hidden="true"> 내시간표</i>
-  <i class="fa fa-user-circle" aria-hidden="true"> 정보수정</i>
-</div>
-
-<header>
-  <nav class="user">
-    <ul class="etc-func nav-ul">
-      <li><%= link_to '제보하기' %></li>
-    </ul>
-    <ul class="log-stat nav-ul">
-      <% if user_signed_in? %>
-          <li><%= current_user.email %>님</li>
-          <li><%= link_to '로그아웃', destroy_user_session_path %></li>
-      <% else %>
-          <li><%= link_to '가입하기', new_user_session_path %></li>
-          <li><%= link_to '로그인', user_session_path %></li>
-      <% end %>
-    </ul>
-  </nav>
-
-
-  <div class="header">
-    <h1>Classinfoapp</h1>
-      <ul class="nav-ul">
-        <li><%=link_to 'HOME', root_path %></li>
-        <li><%=link_to '근처빈강의실찾기', '#' %></li>
-        <li><%=link_to '강의실대여정보보기', '#' %></li>
-      </ul>
+<div class="blue-bar">
+  <div class="left">
+    <p>
+      (학교로고) DKU CAU
+      <i class="fa fa-calendar" aria-hidden="true"> 내시간표</i>
+      <i class="fa fa-user-circle" aria-hidden="true"> 정보수정</i>
+    </p>
   </div>
-</header>
+  <div class="right">
+    <i class="fa fa-pencil-square-o" aria-hidden="true"> 빈강 </i>
+    <i class="fa fa-search" aria-hidden="true"> 강의실 </i>
+  </div>
+
+</div>
