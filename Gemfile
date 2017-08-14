@@ -23,6 +23,7 @@ gem 'devise-i18n'
 gem 'cancancan'
 gem 'rolify'
 gem 'activeadmin'
+
 # shell
 gem 'devise'
 gem 'pry'
@@ -35,7 +36,7 @@ gem 'carrierwave'
 
 # frontend
   # bootstrap
-  gem 'bootstrap-sass'
+  # gem 'bootstrap-sass'
   gem 'devise-bootstrap-views'
   gem 'simple_form'
   gem 'font-awesome-rails'
