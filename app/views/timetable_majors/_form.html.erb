@@ -1,0 +1,17 @@
+<%= form_for(timetable_major) do |f| %>
+  <% if timetable_major.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(timetable_major.errors.count, "error") %> prohibited this timetable_major from being saved:</h2>
+
+      <ul>
+      <% timetable_major.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,68 @@
+<%= form_tag '/timetable_normals', method: :get do %>
+<p id="notice"><%= notice %></p>
+<h2 class="center">교양과목 시간표</h2>
+<table class="table table-bordered table-condensed table-striped">
+  <caption class="center">
+    항목수 : <%= @timetable_normals.size %>개 | <%= submit_tag '검색', :name => nil %> <br>
+    <%= link_to '재설정', timetable_normals_path %> | <%= link_to '뒤로가기', root_path %>
+  </caption>
+
+  <thead>
+    <tr class='query_field'>
+      <th>
+        <%= check_box_tag :div, 'on', params[:div] %>
+        <%= text_field_tag :divtext, params[:divtext], placeholder: '이수구분', :disabled => (params[:div] == 'on' ? false : true) %>
+      </th>
+      <th>
+        <%= check_box_tag :title, 'on', params[:title] %>
+        <%= text_field_tag :titletext, params[:titletext], placeholder: '과목명', :disabled => (params[:title] == 'on' ? false : true), :style => 'width:100%' %>
+      </th>
+      <th>
+        <%= check_box_tag :grades, 'on', params[:grades] %>
+        <%= text_field_tag :gradestext, params[:gradestext], placeholder: '학점', :disabled => (params[:grades] == 'on' ? false : true) %>
+      </th>
+      <th>
+        <%= check_box_tag :proffesion, 'on', params[:proffesion] %>
+        <%= text_field_tag :proffesiontext, params[:proffesiontext], placeholder: '교강사', :disabled => (params[:prof] == 'on' ? false : true) %>
+      </th>
+      <th>
+        <%= check_box_tag :day, 'on', params[:day] %>
+        <%= text_field_tag :daytext, params[:daytext], placeholder: '요일', :disabled => (params[:day] == 'on' ? false : true), class: 'center' %>
+      </th>
+      <th>
+        <%= check_box_tag :time, 'on', params[:time] %>
+        <%= text_field_tag :timetext, params[:timetext], placeholder: '시간', :disabled => (params[:time] == 'on' ? false : true) %>
+      </th>
+      <th>
+        <%= check_box_tag :classroom, 'on', params[:classroom] %>
+        <%= text_field_tag :classroomtext, params[:classroomtext], placeholder: '강의실', :disabled => (params[:classroom] == 'on' ? false : true) %>
+      </th>
+      <th colspan="3">데이터 작업</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @timetable_normals.each do |n| %>
+      <tr>
+        <td><%= n.div %></td>
+        <td><%= n.title %></td>
+        <td class='center'><%= n.grades %></td>
+        <td class='center'><%= n.proffesion %></td>
+        <td class='center'><%= simple_format n.day %></td>
+        <td><%= simple_format n.time %></td>
+        <td><%= simple_format n.classroom %></td>
+        <td><%= link_to fa_icon('eye'), n %></td>
+        <td><%= link_to fa_icon('edit'), edit_timetable_normal_path(n) %></td>
+        <td><%= link_to fa_icon('trash'), n, method: :delete, data: { confirm: '삭제할까요?' } %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="10" class='center'>
+        <%= paginate @timetable_normals, window: 4 %>
+        <h2><strong><%= link_to '과목 추가하기', new_timetable_normal_path %></strong></h2><br>
+        <%= link_to '뒤로가기', root_path %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
