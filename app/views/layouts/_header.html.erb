@@ -1,3 +1,55 @@
+<div class="color-bar">
+  <div class="a"></div>
+  <div class="b"></div>
+  <div class="c"></div>
+  <div class="d"></div>
+  <div class="e"></div>
+  <div class="f"></div>
+</div>
+<header class="main-header">
+  <div class="main-box-third log-stat">
+    <ul class="log-stat">
+      <% if user_signed_in? %>
+          <li><%= current_user.email %>님</li>
+          <li><%= link_to'로그아웃', destroy_user_session_path %></li>
+      <% else %>
+          <li><%= link_to new_user_session_path, class: 'icon-label' do %>
+                <i class="fa fa-envelope-o" aria-hidden="true"></i> 가입하기
+            <% end %></li>
+          <li><%= link_to user_session_path, class: 'icon-label' do %>
+                <i class="fa fa-user-o" aria-hidden="true"></i> 로그인
+            <% end %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="main-box-third box-logo">
+    <%= link_to root_path do %>
+        <h1 class="logo">Classinfo</h1>
+        <p class="version">beta 1.0</p>
+    <% end %>
+
+  </div>
+
+  <div class="main-box-third func">
+    <ul class="nav-ul">
+      <li><%= link_to '#' do %>
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 공강(현재빈강의실)
+        <% end %></li>
+      <li><%= link_to '#' do %>
+        <i class="fa fa-search" aria-hidden="true"></i> 강의실대여
+      <% end %></li>
+    </ul>
+  </div>
+</header>
+<div class="blue">
+  (학교로고)
+  DKU
+  CAU
+  <i class="fa fa-calendar" aria-hidden="true"> 내시간표</i>
+  <i class="fa fa-user-circle" aria-hidden="true"> 정보수정</i>
+</div>
+
 <header>
   <nav class="user">
     <ul class="etc-func nav-ul">
@@ -11,17 +63,9 @@
           <li><%= link_to '가입하기', new_user_session_path %></li>
           <li><%= link_to '로그인', user_session_path %></li>
       <% end %>
-
     </ul>
   </nav>
-  <div class="color-bar">
-    <div class="a"></div>
-    <div class="b"></div>
-    <div class="c"></div>
-    <div class="d"></div>
-    <div class="e"></div>
-    <div class="f"></div>
-  </div>
+
 
   <div class="header">
     <h1>Classinfoapp</h1>

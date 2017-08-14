@@ -36,7 +36,7 @@ gem 'carrierwave'
 
 # frontend
   # bootstrap
-  # gem 'bootstrap-sass'
+  gem 'bootstrap-sass'
   gem 'devise-bootstrap-views'
   gem 'simple_form'
   gem 'font-awesome-rails'
