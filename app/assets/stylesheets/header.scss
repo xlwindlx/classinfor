@@ -34,22 +34,22 @@ header.main-header {
 
   display: flex;
   justify-content: space-between;
-  .main-box-third {
+  div.main-box-third {
     width: 33.3%;
     padding: 0 1em;
   }
-  .log-stat {
+  div.log-stat {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
   }
-  .box-logo {
+  div.box-logo {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
-  .func {
+  div.func {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -107,8 +107,11 @@ div.blue-bar {
     margin: 0 3px;
   }
 }
-a {
+a.icon-label {
   text-decoration: none;
+  &:visited {
+    color: inherit;
+  }
 }
 div.beta {
   display: flex;

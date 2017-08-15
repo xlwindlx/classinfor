@@ -1,0 +1,7 @@
+<% @floors.each do |f| %>
+    <%= link_to "/home/else/#{@building.number}/#{f.to_s}" , class: 'floors' do %>
+        <button class="ui basic button">
+          <%= f.to_s + '층' %>
+        </button>
+    <% end %>
+<% end %>

@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 20170808080917) do
   create_table "buildings", force: :cascade do |t|
     t.integer  "number"
     t.string   "name"
+    t.integer  "min_floor"
+    t.integer  "max_floor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

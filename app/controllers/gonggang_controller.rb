@@ -1,0 +1,2 @@
+class GonggangController < ApplicationController
+end

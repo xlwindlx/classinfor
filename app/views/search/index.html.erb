@@ -1,0 +1,50 @@
+<div class="explain">
+  <p>강의실 소속정보</p>
+</div>
+<div class="tri-select">
+  <div class="box-third">
+    <%= link_to '/search/find_by_building', class: 'a-button' do %>
+        <button class="ui basic button big">
+          <i class="fa fa-building-o" aria-hidden="true"></i>
+          건물로찾기
+        </button>
+    <% end %>
+  </div>
+  <div class="box-third">
+    <%= link_to '/search/find_by_department' do %>
+        <button class="ui basic button big">
+          <i class="fa fa-university" aria-hidden="true"></i>
+          부서로찾기
+        </button>
+    <% end %>
+  </div>
+  <div class="box-third">
+    <%= link_to '#' do %>
+        <button class="ui basic button big">
+          <i class="fa fa-filter" aria-hidden="true"></i>
+          조건으로검색
+        </button>
+    <% end %>
+  </div>
+</div>
+<div class="explain">
+  <p>강의검색하기</p>
+</div>
+<div class="duel-select">
+  <div class="box-half">
+    <%= link_to timetable_normals_path do %>
+        <button class="ui basic button big">
+          <i class="fa fa-paint-brush" aria-hidden="true"></i>
+          교양시간표검색
+        </button>
+    <% end %>
+  </div>
+  <div class="box-half">
+    <%= link_to timetable_majors_path do %>
+        <button class="ui basic button big">
+          <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+          전공시간표검색
+        </button>
+    <% end %>
+  </div>
+</div>

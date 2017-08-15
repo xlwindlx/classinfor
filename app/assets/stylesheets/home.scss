@@ -1,3 +1,60 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.tri-select{
+  display: flex;
+  div:nth-child(n) {
+    width: 33%;
+
+    display: flex;
+    justify-content: center;
+  }
+}
+a.a-button {
+  &:hover {
+    text-decoration: none;
+  }
+}
+a:hover {
+  color: #181818;
+  background-color: rgba(0,0,0,0);
+}
+div.explain {
+  display: flex;
+  justify-content: flex-start;
+  p {
+    margin: 1em 0;
+  }
+}
+div.duel-select {
+  display: flex;
+  justify-content: space-between;
+  div:nth-child(n){
+    width: 50%;
+
+    display: flex;
+    justify-content: center;
+  }
+}
+
+//find_by_buildings
+div.buildings {
+  padding: 2em 2em;
+  height: 230px;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: space-around;
+
+  button {
+    margin: 3px 3px;
+  }
+}
+//children
+a.floors {
+  button {
+    width: 6em;
+  }
+}

@@ -1,0 +1,2 @@
+module GonggangHelper
+end

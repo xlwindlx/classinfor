@@ -1,0 +1,9 @@
+<div class="buildings">
+  <% @buildings.each do |b| %>
+      <button class="ui basic button big <%= %w(red yellow).sample(1)[0] %>">
+        <%= link_to "/home/find_by_building/#{b.number}" do %>
+            <%= b.number %>
+        <% end %>
+      </button>
+  <% end %>
+</div>
