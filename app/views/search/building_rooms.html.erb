@@ -1,0 +1,22 @@
+<% unless @rooms.empty? %>
+  <table>
+    <thead>
+      <tr>
+        <th>건물</th>
+        <th>위치</th>
+        <th>소속</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @rooms.each do |r| %>
+      <tr>
+        <td><%= r.building.number %></td>
+        <td><%= r.loc %></td>
+        <td><%= r.department.name %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>정보가 없어요</p>
+<% end %>

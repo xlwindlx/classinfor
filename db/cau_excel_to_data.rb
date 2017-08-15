@@ -24,7 +24,8 @@ def rooms_from_excel
         floor: (floors[i] == 'B1' ? -1 : floors[i].to_i),
         loc: (floors[i][0] == '0' ? floors[i][1] : floors[i]) + numbers[i],
         capacity: capacities[i].to_i,
-        department: departments[i]
+        department: departments[i],
+        level: 1
     }
   end
   return rooms

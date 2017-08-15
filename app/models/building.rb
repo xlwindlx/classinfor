@@ -4,7 +4,7 @@ class Building < ApplicationRecord
   has_many :rooms
 
   def default_values
-    self.min_floor ||= -2
-    self.max_floor ||= 10
+    self.have_floors ||= 0
+    self.valid_floors ||= 0
   end
 end

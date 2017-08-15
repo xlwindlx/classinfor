@@ -1,9 +1,9 @@
 <div class="buildings">
-  <% @buildings.each do |b| %>
-      <button class="ui basic button big <%= %w(red yellow).sample(1)[0] %>">
-        <%= link_to "/home/find_by_building/#{b.number}" do %>
-            <%= b.number %>
-        <% end %>
+  <% @buildings.each_with_index do |b, i| %>
+    <%= link_to "/search/find_by_building/#{b.number}" do %>
+      <button class="ui basic button big <%= ui_color(i) %>">
+        <%= b.number %>
       </button>
+    <% end %>
   <% end %>
 </div>

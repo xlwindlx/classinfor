@@ -47,15 +47,4 @@ class HomeController < ApplicationController
     end
 
   end
-
-  def find_by_building
-    @buildings = Building.all
-  end
-  def building_children
-    @building = Building.where(number: params[:number])[0]
-    @floors = @building.min_floor..@building.max_floor
-  end
-  def else
-    @rooms = Building.where(number: params[:number])[0].rooms.where(floor: params[:floor].to_i)
-  end
 end

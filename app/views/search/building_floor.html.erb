@@ -1,7 +1,13 @@
-<% @floors.each do |f| %>
-    <%= link_to "/home/else/#{@building.number}/#{f.to_s}" , class: 'floors' do %>
-        <button class="ui basic button">
-          <%= f.to_s + '층' %>
-        </button>
+<% @floors.each do |k, v| %>
+  <%= link_to "/search/find_by_building/#{@building.number}/#{k.to_s}" , class: 'floors' do %>
+    <%# next if v == 0 %>
+    <% if k.to_i < 0 %>
+        <% @f = 'B' + k.to_s.split('-')[1] %>
+    <% elsif k.to_i == 0 %>
+        <% next %>
+    <% else %>
+        <% @f = k + '층' %>
     <% end %>
+    <button class="ui basic button<%= ' secondary' if v %>"><%= @f %></button>
+  <% end %>
 <% end %>

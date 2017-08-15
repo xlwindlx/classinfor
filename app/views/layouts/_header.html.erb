@@ -6,10 +6,10 @@
           <li><%= current_user.email %>님</li>
           <li><%= link_to'로그아웃', destroy_user_session_path %></li>
       <% else %>
-          <li><%= link_to new_user_session_path, class: 'icon-label' do %>
+          <li><%= link_to new_user_registration_path, class: 'icon-label' do %>
                 <i class="fa fa-envelope-o" aria-hidden="true"></i> 가입하기
             <% end %></li>
-          <li><%= link_to user_session_path, class: 'icon-label' do %>
+          <li><%= link_to new_user_session_path, class: 'icon-label' do %>
                 <i class="fa fa-user-o" aria-hidden="true"></i> 로그인
             <% end %></li>
       <% end %>
