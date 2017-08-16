@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   resources :timetable_normals
   resources :timetable_majors
   get 'timetable/normal'
