@@ -31,7 +31,15 @@ ActiveRecord::Schema.define(version: 20170808080917) do
   create_table "lectures", force: :cascade do |t|
     t.string   "name"
     t.string   "professor"
+    t.integer  "campus"
+    t.integer  "subjno"
+    t.integer  "subjclass"
+    t.integer  "year"
     t.integer  "semaster"
+    t.string   "classify"
+    t.string   "major1"
+    t.string   "major2"
+    t.integer  "room_id"
     t.integer  "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,7 +62,8 @@ ActiveRecord::Schema.define(version: 20170808080917) do
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.integer  "building"
+    t.string   "room_name"
+    t.integer  "build"
     t.string   "department"
     t.integer  "floor"
     t.string   "loc"

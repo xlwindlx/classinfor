@@ -2,8 +2,9 @@ class CreateRooms < ActiveRecord::Migration[5.0]
   def change
 
     create_table :rooms do |t|
-
-      t.integer :building
+      t.string :room_name
+      
+      t.integer :build
       t.string :department
 
       t.integer :floor #층

@@ -3,9 +3,21 @@ class CreateLectures < ActiveRecord::Migration[5.0]
     create_table :lectures do |t|
       t.string :name
       t.string :professor
-      t.integer :semaster # 201702
-      t.integer :grade    # 01
+      t.integer :campus
 
+      t.integer :subjno # 37550
+      t.integer :subjclass # 1~
+
+      t.integer :year # 2017
+      t.integer :semaster # 2
+
+      t.string :classify
+      t.string :major1
+      t.string :major2
+
+      t.integer :room_id, foreign_key: true
+
+      t.integer :grade    # 1~4
       t.timestamps
     end
   end
