@@ -59,6 +59,7 @@
     <tr>
       <td colspan="10" class='center'>
         <%= paginate @timetable_normals, window: 4 %>
+        <% # TODO CRUD 작성 미완료 %>
         <h2><strong><%= link_to '과목 추가하기', new_timetable_normal_path %></strong></h2><br>
         <%= link_to '뒤로가기', root_path %>
       </td>
