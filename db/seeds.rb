@@ -17,9 +17,9 @@ if true
     next if Room.where('build = ? AND loc = ?', r[:build], r[:loc]).exists?
 
     # buidling
-    building = Building.where(number: r[:building])
+    building = Building.where(number: r[:build])
     unless building.exists?
-      building_id = Building.create(number: r[:building]).id
+      building_id = Building.create(number: r[:build]).id
     else
       building_id = building[0].id
     end
