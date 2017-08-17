@@ -42,7 +42,7 @@ if true
     new_room.save
 
   end
-
+=begin
   # 강의들을 불러온다
   lectures = lectures_from_excel
   lectures.each do |lecture|
@@ -122,7 +122,7 @@ if true
 
 
   end
-
+=end
 end
 
 #dku
