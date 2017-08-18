@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   # 빈강의실
   get 'empty_room/home'
+  get 'empty_room/floor_info'
 
   # 두가지 옵션
   get 'search/index'

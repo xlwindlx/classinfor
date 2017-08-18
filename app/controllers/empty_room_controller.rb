@@ -8,6 +8,12 @@ class EmptyRoomController < ApplicationController
     Building.all.order(number: :asc).each do |b|
       @data[b.number.to_s] = b.have_floors
     end
+    @floors = Building.find(1).rooms.select(:floor).distinct
+  end
+
+  def floor_info
+    @floors = Building.where(number: params[:number].to_i).first.rooms.select(:floor).distinct.order(floor: :asc)
+    render partial: 'floors', object: @floors
   end
 
   private
