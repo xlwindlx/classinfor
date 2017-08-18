@@ -45,26 +45,22 @@
         </svg>
 
         </div>
-<% end %>
+    <% end %>
     <div class="menu">
 
       <% if user_signed_in? or true %>
 
-      <%= link_to '#', class: 'icon-label', id: 'univ'  do %>
-          중앙대학교(서울) / 권태욱
-      <% end %>
+        <%= link_to '#', class: 'icon-label', id: 'univ'  do %>
+            중앙대학교(서울) / 권태욱
+        <% end %>
 
-      <%= link_to '/func/timetable', class: 'icon-label' do %>
-          내 시간표
-      <% end %>
+        <%= link_to '/func/timetable', class: 'icon-label' do %>
+            내 시간표
+        <% end %>
 
-      <%= link_to '/gonggang/index', class: 'icon-label' do %>
-        빈 강의실 검색
-      <% end %>
-
-          <%= link_to '/gonggang/index', class: 'icon-label' do %>
-      로그아웃
-          <% end %>
+        <%= link_to '/gonggang/index', class: 'icon-label' do %>
+          로그아웃
+        <% end %>
 
       <% end %>
 
