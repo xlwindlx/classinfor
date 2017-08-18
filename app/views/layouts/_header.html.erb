@@ -3,54 +3,55 @@
 
   <div class="nav-bar">
 
-    <div class="logo">
+    <%= link_to root_path do %>
+        <div class="logo">
 
-    <svg width="35px" height="34px" viewBox="0 0 42 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
-      <desc>Created with Sketch.</desc>
-      <defs></defs>
-      <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="main" transform="translate(-89.000000, -55.000000)">
-          <g id="Group-2" transform="translate(89.000000, 53.000000)">
-            <g id="logo" transform="translate(0.000000, 2.000000)">
-              <g id="Group">
-                <rect id="Rectangle" fill="#FF0000" x="0" y="0" width="27.9570552" height="5.68821293"></rect>
-                <rect id="Rectangle-Copy" fill="#2000FF" x="0" y="5.68821293" width="14.0429448" height="5.68821293"></rect>
-                <rect id="Rectangle-Copy-2" fill="#980DEB" x="0" y="11.2471483" width="42" height="5.68821293"></rect>
-                <rect id="Rectangle-Copy-3" fill="#8AD000" x="0" y="16.9353612" width="34.7852761" height="5.68821293"></rect>
-                <rect id="Rectangle-Copy-4" fill="#FDFF00" x="0" y="22.6235741" width="21" height="5.68821293"></rect>
-                <rect id="Rectangle-Copy-5" fill="#71D0EF" x="0" y="28.3117871" width="27.9570552" height="5.68821293"></rect>
+        <svg width="35px" height="34px" viewBox="0 0 42 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+          <desc>Created with Sketch.</desc>
+          <defs></defs>
+          <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="main" transform="translate(-89.000000, -55.000000)">
+              <g id="Group-2" transform="translate(89.000000, 53.000000)">
+                <g id="logo" transform="translate(0.000000, 2.000000)">
+                  <g id="Group">
+                    <rect id="Rectangle" fill="#FF0000" x="0" y="0" width="27.9570552" height="5.68821293"></rect>
+                    <rect id="Rectangle-Copy" fill="#2000FF" x="0" y="5.68821293" width="14.0429448" height="5.68821293"></rect>
+                    <rect id="Rectangle-Copy-2" fill="#980DEB" x="0" y="11.2471483" width="42" height="5.68821293"></rect>
+                    <rect id="Rectangle-Copy-3" fill="#8AD000" x="0" y="16.9353612" width="34.7852761" height="5.68821293"></rect>
+                    <rect id="Rectangle-Copy-4" fill="#FDFF00" x="0" y="22.6235741" width="21" height="5.68821293"></rect>
+                    <rect id="Rectangle-Copy-5" fill="#71D0EF" x="0" y="28.3117871" width="27.9570552" height="5.68821293"></rect>
+                  </g>
+                </g>
               </g>
             </g>
           </g>
-        </g>
-      </g>
-    </svg>
+        </svg>
 
 
-    <svg width="105px" height="27px" viewBox="0 0 136 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="classinfo_logo">
-      <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
-      <desc>Created with Sketch.</desc>
-      <defs></defs>
-      <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="35" font-family="AppleSDGothicNeo-ExtraBold, Apple SD Gothic Neo" font-weight="600">
-        <g id="main" transform="translate(-151.000000, -57.000000)" fill="#444444">
-          <g id="Group-2" transform="translate(89.000000, 53.000000)">
-            <text id="Classinfo">
-              <tspan x="61" y="32">Classinfo</tspan>
-            </text>
+        <svg width="105px" height="27px" viewBox="0 0 136 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="classinfo_logo">
+          <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+          <desc>Created with Sketch.</desc>
+          <defs></defs>
+          <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="35" font-family="AppleSDGothicNeo-ExtraBold, Apple SD Gothic Neo" font-weight="600">
+            <g id="main" transform="translate(-151.000000, -57.000000)" fill="#444444">
+              <g id="Group-2" transform="translate(89.000000, 53.000000)">
+                <text id="Classinfo">
+                  <tspan x="61" y="32">Classinfo</tspan>
+                </text>
+              </g>
+            </g>
           </g>
-        </g>
-      </g>
-    </svg>
+        </svg>
 
-    </div>
-
+        </div>
+<% end %>
     <div class="menu">
 
       <% if user_signed_in? or true %>
 
       <%= link_to '#', class: 'icon-label', id: 'univ'  do %>
-          중앙대학교(서울)/권태욱
+          중앙대학교(서울) / 권태욱
       <% end %>
 
       <%= link_to '/func/timetable', class: 'icon-label' do %>

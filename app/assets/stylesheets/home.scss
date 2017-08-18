@@ -93,6 +93,12 @@ a.floors {
 
 }
 
+.search p{
+  font-weight:bold;
+  font-size:0.8em;
+  padding-right:2vw;
+}
+
 #search_btn {
   font-size:1.1em;
   display:flex;
@@ -110,11 +116,12 @@ a.floors {
 
 .floor{
   padding-right:6vw;
+
 }
 .detail_search {
   font-weight: bold;
   color: #4596f3;
   font-size:1.1em;
-  padding-top:2vh;
+  padding-top:6vh;
 }
 
