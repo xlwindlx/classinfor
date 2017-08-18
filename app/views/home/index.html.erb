@@ -1,58 +1,53 @@
-<!-- <%= render 'layouts/beta_notice' %> -->
+<%= render 'layouts/beta_notice' %>
 <div class="index_bg">
 
   <div class="container-2">
 
     <div class="main-visual-wrapper">
 
-    <div class="main-copy">
-      <p>현재 위치에서 가장 가까운<br>
-    <span style="font-weight:bold;">빈 강의실</span>을 찾아보세요</p>
-    </div>
-
-    <div class="search">
-
-      <div class="building">
-
-      <p>건물명</p>
-
-      <select class="ui search dropdown" style="width:13vw; height: 5vh;">
-        <option value="">State</option>
-        <option value="AL">Alabama</option>
-        <option value="AK">Alaska</option>
-        <option value="AZ">Arizona</option>
-        <option value="AR">Arkansas</option>
-        <option value="CA">California</option>
-      </select>
-
+      <div class="main-copy">
+        <p>현재 위치에서 가장 가까운<br><span style="font-weight:bold;">빈 강의실</span>을 찾아보세요</p>
       </div>
 
-      <div class="floor">
+      <div class="search">
 
-      <p>층 수</p>
+        <%= form_tag '/empty_room/result', method: :post do %>
 
-      <select class="ui search dropdown" style="width:13vw; height: 5vh;">
-        <option value="">State</option>
-        <option value="AL">Alabama</option>
-        <option value="AK">Alaska</option>
-        <option value="AZ">Arizona</option>
-        <option value="AR">Arkansas</option>
-        <option value="CA">California</option>
-      </select>
+          <div class="building">
+            <p>건물명</p>
+            <select name='building[number]' class="ui search dropdown" style="width:13vw; height: 5vh;" onchange='update_floor_info(this.value)'>
+              <% Building.all.order(number: :asc).each do |b| %>
+                <option value="<%= b.number %>"><%= b.name %> (<%= b.number.to_s %>)</option>
+              <% end %>
+            </select>
+          </div>
+
+          <div class="floor">
+            <p>층 수</p>
+            <%= render partial: 'empty_room/floors', locals: { floors: Building.find(1).rooms.select(:floor).distinct.order(floor: :asc) } %>
+          </div>
+          <input type="submit" id="search_btn" value="검색하기">
+        <% end %>
 
       </div>
-
-      <a href="#" id="search_btn">검색하기</a>
-
-    </div>
-
-
 
       <p class="detail_search">
         <a href="#"> 상세 검색 옵션 > </a>
-
       </p>
 
   </div>
 
 </div>
+<script>
+    function update_floor_info(building_num) {
+        jQuery.ajax({
+            url: "/empty_room/floor_info",
+            type: "GET",
+            data: {"number" : building_num},
+            dataType: "html",
+            success: function(data) {
+                jQuery("#select").html(data);
+            }
+        });
+    }
+</script>
