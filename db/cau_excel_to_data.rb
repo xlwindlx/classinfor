@@ -5,6 +5,14 @@ def is_i?(str)
   !!(str =~ /\A[-+]?[0-9]+\z/)
 end
 
+def floor_str_2_room(str)
+  if str[0] == 'B' || str[0] == 'b'
+    str[1].to_i * -1
+  else
+    str.to_i
+  end
+end
+
 def rooms_from_excel
   script_folder_path = File.dirname(__FILE__)
   xlsx = Roo::Spreadsheet.open("#{script_folder_path}/cau_classinfo.xlsx")
@@ -21,8 +29,8 @@ def rooms_from_excel
     str = buildings[i].split('관')[0]
     rooms[i-2] = {
         build: (is_i?(str) ? str.to_i : 0),
-        floor: (floors[i] == 'B1' ? -1 : floors[i].to_i),
-        loc: (floors[i][0] == '0' ? floors[i][1] : floors[i]) + numbers[i],
+        floor: floor_str_2_room(floors[i]),
+        loc: floor_str_2_room(floors[i]) * 100 + numbers[i].to_i,
         capacity: capacities[i].to_i,
         department: departments[i],
         level: 1
@@ -31,10 +39,20 @@ def rooms_from_excel
   return rooms
 end
 
+def third_max(su)
+  num = su % 100
+  floor = su - num
+
+  if (floor / 100) > 20
+    return 1000 + num
+  end
+  return su
+end
+
 def lectures_from_excel
   puts 'lectures'
   script_folder_path = File.dirname(__FILE__)
-  xlsx = Roo::Spreadsheet.open("#{script_folder_path}/cau_lectures/pprocessed.xlsx")
+  xlsx = Roo::Spreadsheet.open("#{script_folder_path}/cau_lectures/processed.xlsx")
   sheet = xlsx.sheet(0)
 
   name = sheet.column(1)      # 과목명
@@ -76,7 +94,7 @@ def lectures_from_excel
       classify: classify[i],
       major1: major1[i],
       major2: major2[i],
-      mynums: mynums[i]
+      mynum: mynums[i].to_i
     }
 
     if room_exists[i] == 'true'
@@ -87,21 +105,29 @@ def lectures_from_excel
 
       local_room = {
           building: building[i].to_i,
-          loc1: loc1[i].to_i,
+          loc1: third_max(loc1[i].to_i),
           loc2: loc2[i].to_i,
           room_name: room_name[i]
       }
 
       local_times = []
-      if time1[i].size > 0
+      if time1[i].nil?
+        local_times.push(nil)
+      else
         temp = time1[i].split(' ')
         local_times.push({ week: temp[0], st: temp[1].to_i, fi: temp[2].to_i })
       end
-      if time2[i].size > 0
+
+      if time2[i].nil?
+        local_times.push(nil)
+      else
         temp = time2[i].split(' ')
         local_times.push({ week: temp[0], st: temp[1].to_i, fi: temp[2].to_i })
       end
-      if time3[i].size > 0
+
+      if time3[i].nil?
+        local_times.push(nil)
+      else
         temp = time3[i].split(' ')
         local_times.push({ week: temp[0], st: temp[1].to_i, fi: temp[2].to_i })
       end
