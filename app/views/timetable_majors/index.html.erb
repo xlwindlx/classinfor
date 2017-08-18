@@ -4,10 +4,10 @@
 <table class="table table-bordered table-condensed table-striped">
   <caption class='center'>
     항목수 : <%= @timetable_majors.size %>개 | <%= submit_tag '검색', :name => nil %> <br>
-    <%= link_to '재설정', timetable_majors_path %> | <%= link_to '뒤로가기', :back %>
+    <%= link_to '재설정', timetable_majors_path %> | <%= link_to '뒤로가기', search_index_path %>
   </caption>
   <thead>
-    <tr class="query_field">
+    <tr class='query_field'>
       <th>
         <%= check_box_tag :div, 'on', params[:div] %>
         <%= text_field_tag :divtext, params[:divtext], placeholder: '이수구분', :disabled => (params[:div] == 'on' ? false : true) %>
@@ -44,33 +44,32 @@
         <%= check_box_tag :classroom, 'on', params[:classroom] %>
         <%= text_field_tag :classroomtext, params[:classroomtext], placeholder: '강의실', :disabled => (params[:classroom] == 'on' ? false : true) %>
       </th>
-      <th colspan="3">데이터관리</th>
+      <th colspan="3">데이터 관리</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @timetable_majors.each do |prof| %>
+    <% @timetable_majors.each do |p| %>
       <tr>
-        <td><%= prof.div %></td>
-        <td class='center'><%= prof.subject %></td>
-        <td class='center'><%= prof.grade %></td>
-        <td><%= prof.title %></td>
-        <td class='center'><%= prof.grades %></td>
-        <td class='center'><%= prof.proffesion %></td>
-        <td class='center'><%= simple_format prof.day %></td>
-        <td><%= simple_format prof.time %></td>
-        <td><%= simple_format prof.classroom %></td>
-        <td><%= link_to fa_icon('eye'), prof %></td>
-        <td><%= link_to fa_icon('edit'), edit_timetable_major_path(prof) %></td>
-        <td><%= link_to fa_icon('trash'), prof, method: :delete, data: { confirm: '삭제할까요?' } %></td>
+        <td><%= p.div %></td>
+        <td class='center'><%= p.subject %></td>
+        <td class='center'><%= p.grade %></td>
+        <td><%= p.title %></td>
+        <td class='center'><%= p.grades %></td>
+        <td class='center'><%= p.proffesion %></td>
+        <td class='center'><%= simple_format p.day %></td>
+        <td><%= simple_format p.time %></td>
+        <td><%= simple_format p.classroom %></td>
+        <td><%= link_to fa_icon('eye'), p %></td>
+        <td><%= link_to fa_icon('edit'), edit_timetable_major_path(p) %></td>
+        <td><%= link_to fa_icon('trash'), p, method: :delete, data: { confirm: '삭제할까요?' } %></td>
       </tr>
     <% end %>
     <tr>
       <td colspan="12" class='center'>
         <%= paginate @timetable_majors, window: 4 %>
-        <% # TODO CRUD 작성 미완료 %>
         <h2><strong><%= link_to '과목 추가하기', new_timetable_major_path %></strong></h2><br>
-        <%= link_to '뒤로가기', :back %>
+        <%= link_to '뒤로가기', search_index_path %>
       </td>
     </tr>
   </tbody>

@@ -4,9 +4,8 @@
 <table class="table table-bordered table-condensed table-striped">
   <caption class="center">
     항목수 : <%= @timetable_normals.size %>개 | <%= submit_tag '검색', :name => nil %> <br>
-    <%= link_to '재설정', timetable_normals_path %> | <%= link_to '뒤로가기', :back %>
+    <%= link_to '재설정', timetable_normals_path %> | <%= link_to '뒤로가기', search_index_path %>
   </caption>
-
   <thead>
     <tr class='query_field'>
       <th>
@@ -37,7 +36,7 @@
         <%= check_box_tag :classroom, 'on', params[:classroom] %>
         <%= text_field_tag :classroomtext, params[:classroomtext], placeholder: '강의실', :disabled => (params[:classroom] == 'on' ? false : true) %>
       </th>
-      <th colspan="3">데이터 작업</th>
+      <th colspan="3">데이터 관리</th>
     </tr>
   </thead>
 
@@ -59,9 +58,8 @@
     <tr>
       <td colspan="10" class='center'>
         <%= paginate @timetable_normals, window: 4 %>
-        <% # TODO CRUD 작성 미완료 %>
         <h2><strong><%= link_to '과목 추가하기', new_timetable_normal_path %></strong></h2><br>
-        <%= link_to '뒤로가기', :back %>
+        <%= link_to '뒤로가기', search_index_path %>
       </td>
     </tr>
   </tbody>
