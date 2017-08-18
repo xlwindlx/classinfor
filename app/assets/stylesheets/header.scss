@@ -54,9 +54,13 @@ div.small-color-bar {
 }
 
 .menu{
-  width:30%;
+
   display:flex;
   justify-content:space-between;
+}
+
+.icon-label{
+  padding:0 2vw;
 }
 
 
@@ -85,6 +89,7 @@ div.small-color-bar {
     width: 33.3%;
     padding: 0 1em;
   }
+
   div.log-stat {
     display: flex;
     flex-direction: row;
