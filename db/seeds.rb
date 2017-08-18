@@ -42,87 +42,59 @@ if true
     new_room.save
 
   end
-=begin
-  # 강의들을 불러온다
+
   lectures = lectures_from_excel
   lectures.each do |lecture|
-    # 강의를 등록한다
-    db_lecture = Lecture.where('subjno = ? AND subjclass = ?', lecture[:subjno], lecture[:subjclass])[0]
-    if db_lecture.nil?
-      new_lecture = Lecture.new(
-          name: lecture[:name],
-          professor: lecture[:professor],
-          campus: lecture[:campus],
-          subjno: lecture[:subjno],
-          subjclass: lecture[:subjclass],
-          year: lecture[:year],
-          semaster: lecture[:semaster],
-          classify: lecture[:classify],
-          major1: lecture[:major1]
+
+    db_lecture = Lecture.where(mynum: lecture[:mynum])[0]
+    unless db_lecture.exists?
+      Lecture.create(
+        name: lecture[:name],
+        professor: lecture[:professor],
+        campus: lecture[:campus],
+
+        subjno: lecture[:subjno],
+        subjclass: lecture[:subjclass],
+
+        year: lecture[:year],
+        semaster: lecture[:semaster],
+
+        classify: lecture[:classify],
+        major1: lecture[:major1],
+        major2: lecture[:major2],
+
+        mynum: lecture[:mynum]
       )
-      new_lecture[:major2] = lecture[:major2] unless lecture[:major2].nil?
-      new_lecture.save
-      db_lecture = Lecture.where('subjno = ? AND subjclass = ?', lecture[:subjno], lecture[:subjclass])[0]
+      db_lecture = Lecture.where(mynum: lecture[:mynum])[0]
     end
 
-    # room을 등록한다
-    room = nil
-    unless lecture[:building].nil?
-      b_num = lecture[:building].to_i
-      l_num = lecture[:loc].to_i
-
-      room = Room.where('build = ? AND loc = ?', b_num, l_num)[0]
-      unless room.nil?
-        room.update_column(:room_name, lecture[:room_name]) if room[:room_name].nil?
+    unless lecture[:r].nil?
+      db_building = Building.where(number: lecture[:b][:building])[0]
+      if db_building.exists?
+        if db_building.name.nil? && lecture[:b][:building_name]
+          db_building.update_column(:name, lecture[:b][:building_name])
+        end
       else
-        Building.create(number: b_num) unless Building.where(number: b_num).exists?
-        new_building_id = Building.where(number: b_num)[0].id
-
-        local_floor = 0
-        if lecture[:loc].size == 3
-          local_floor = lecture[:loc][0].to_i
-        elsif lecture[:loc].size == 4
-          local_floor = lecture[:loc][0..1].to_i
+        if lecture[:b][:building_name].nil?
+          Building.create(number: lecture[:b][:building])
+        else
+          Building.create(number: lecture[:b][:building], name: lecture[:b][:building_name])
         end
-
-        room = Room.create(
-          room_name: lecture[:room_name],
-          build: b_num,
-          loc: l_num,
-          floor: local_floor,
-          level: 2,
-          building_id: new_building_id
-        )
+        db_building = Building.where(number: lecture[:b][:building])[0]
       end
 
-      if db_lecture.room.nil? && !room.nil?
-        db_lecture.update_column(:room_id, room.id)
+      db_room = Room.where('build = ? AND loc = ?', lecture[:r][:building], lecture[:loc1])[0]
+      unless db_room.exists?
+        db_room = Room.create()
+      end
+      unless lecture[:t].nil?
+
       end
     end
 
-    unless lecture[:time_classes].nil?
-      #puts lecture[:time_classes]
-      lecture[:time_classes].each do |time_class|
-        # 수업을 등록한다
-        db_time = db_lecture.time_classes.where('week = ? AND st = ? AND fi = ?', time_class[:yoyil], time_class[:st], time_class[:fi])[0]
-
-        if db_time.nil?
-          new_time_class = TimeClass.new(
-              lecture_id: db_lecture.id,
-              week: time_class[:yoyil],
-              st: time_class[:st],
-              fi: time_class[:fi]
-          )
-          new_time_class.room_id = room.id unless room.nil?
-          new_time_class.save!
-          #new_time_class = db_lecture.time_classes.where('week = ? AND st = ? AND fi = ?', time_class[:yoyil], time_class[:st], time_class[:fi])[0]
-        end
-      end
-    end
 
 
   end
-=end
 end
 
 #dku
