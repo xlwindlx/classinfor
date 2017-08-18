@@ -57,7 +57,6 @@ a.floors {
 }
 
 
-
 .index_bg {
   width:100%;
   background-image: url(/assets/main-img.jpg);
@@ -111,13 +110,15 @@ a.floors {
   font-weight:bold;
   width: 10vw;
   height: 5vh;
+  margin-left:1vw;
 }
 
 .floor{
-  padding-left:2vw;
+  padding-left:5vw;
   padding-right:8vw;
 
 }
+
 .detail_search {
   font-weight: bold;
   color: #4596f3;
