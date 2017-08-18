@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170808080917) do
     t.string   "major2"
     t.integer  "room_id"
     t.integer  "grade"
+    t.integer  "mynum"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -66,7 +67,7 @@ ActiveRecord::Schema.define(version: 20170808080917) do
     t.integer  "build"
     t.string   "department"
     t.integer  "floor"
-    t.string   "loc"
+    t.integer  "loc"
     t.integer  "capacity"
     t.integer  "level"
     t.integer  "building_id"

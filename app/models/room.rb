@@ -7,6 +7,9 @@ class Room < ApplicationRecord
   before_save :default_value
   def default_value
     self.level ||= 3
+    if self.floor.nil?
+      self.floor = (loc - (loc % 100)) / 100
+    end
   end
 
   after_save :floor_update
