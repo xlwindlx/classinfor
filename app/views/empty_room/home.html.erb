@@ -1,28 +1,25 @@
 <%= form_tag '/empty_room/result', method: :post do %>
-    <select name="building[number]">
+    <select name='building[number]' onchange='update_floor_info(this.value)'>
       <% Building.all.order(number: :asc).each do |b| %>
           <option value="<%= b.number %>"><%= b.name %> (<%= b.number.to_s %>)</option>
       <% end %>
     </select>
 
-    <select name="room[floor]">
-      <% Building.find(1).rooms.select(:floor).distinct.order(floor: :asc).each do |f| %>
-          <option value="<%= f.floor.to_s %>"><%= f.floor.to_s %> 층</option>
-      <% end %>
-    </select>
+    <%= render partial: 'empty_room/floors', object: Building.find(1).rooms %>
+
 <% end %>
 
 
 <script>
-    $('#category_dropdown').change(function() {
-        var subcategory_url = "/get_subcategories?category_id=" + $(this).val();
-        var subcategory_select = $(this).next('select');
-
-        $.ajax({
-            url: subcategory_url,
+    function update_floor_info(building_num) {
+        jQuery.ajax({
+            url: "/empty_room/floor_info",
+            type: "GET",
+            data: {"number" : building_num},
+            dataType: "html",
             success: function(data) {
-                subcategory_select.html("<option selected=selected>Select Subcategory</option>" + data);
+                jQuery("#select").html(data);
             }
         });
-    });
+    }
 </script>

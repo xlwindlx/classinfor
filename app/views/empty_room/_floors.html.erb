@@ -1,0 +1,5 @@
+<select name="floor" id="select" class="ui search dropdown" style="width:61px; height: 5vh;">
+  <% floors.each do |f| %>
+    <option value="<%= f %>"><%= f.floor %>층</option>
+  <% end %>
+</select>
