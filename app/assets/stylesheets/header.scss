@@ -14,10 +14,9 @@ div.color-bar {
   div:nth-child(5) {width: 15%; background-color: yellow;}
   div:nth-child(6) {width: 20%; background-color: skyblue;}
 }
+
 div.small-color-bar {
-  div {
     height: 4px;
-  }
   div:nth-child(1) {width: 20px; background-color: red;}
   div:nth-child(2) {width: 10px; background-color: blue;}
   div:nth-child(3) {width: 30px; background-color: blueviolet;}
@@ -25,19 +24,72 @@ div.small-color-bar {
   div:nth-child(5) {width: 15px; background-color: yellow;}
   div:nth-child(6) {width: 20px; background-color: skyblue;}
 }
-header.main-header {
-  //position: fixed;
-  background-color: #fafafa;
 
-  width: 100%;
-  padding: 1.5em 0;
 
-  display: flex;
-  justify-content: space-between;
+
+
+.main-header{
+  display:flex;
+  justify-content:center;
+  width:100%;
+  background-color: #ffffff;
+  font-size:1.2em;
+  box-shadow: 1px 2px 6px 2px rgba(207, 207, 207, 0.5);
+
+}
+
+.nav-bar {
+  width: 90%;
+  height: 8vh;
+  display:flex;
+  justify-content:space-between;
+}
+
+.logo {
+  width: auto;
+}
+
+.classinfo_logo{
+  padding-left:15px;
+}
+
+.menu{
+
+  display:flex;
+  justify-content:space-between;
+}
+
+.icon-label{
+  padding:0 2vw;
+}
+
+
+.menu #univ {
+  color:#4596f3;
+  font-weight:bold;
+}
+
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+
   div.main-box-third {
     width: 33.3%;
     padding: 0 1em;
   }
+
   div.log-stat {
     display: flex;
     flex-direction: row;
@@ -54,7 +106,7 @@ header.main-header {
     justify-content: flex-end;
     align-items: center;
   }
-}
+
 div.box-logo {
   h1 {
     margin: 0 0;
@@ -88,25 +140,17 @@ ul.nav-ul {
   padding: 0 0;
   list-style-type: none;
 }
-div.blue-bar {
-  background-color: #619bf9;
-  height: 2em;
-  padding: 0 0.5em;
 
-  display: flex;
-  justify-content: space-between;
-  div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
+
+
   p {
     margin: 0 0;
   }
+
   i {
     margin: 0 3px;
   }
-}
+
 a.icon-label {
   text-decoration: none;
   &:visited {
