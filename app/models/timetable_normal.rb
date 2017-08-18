@@ -15,14 +15,14 @@ class TimetableNormal < ApplicationRecord
       time = time.reject{|x|x == ""}.join("\n")
       classroom = classroom.join("\n")
       TimetableNormal.create(
-          div: t.css("td")[1].text,
-          title: t.css("td.ta_l a").text.remove("(타학년 제한없음 2차때 수강가능)").remove("(타학년 제한없음, 2차때 신청가능)"),
+          div: t.css("td")[1].text.strip,
+          title: t.css("td.ta_l a").text.remove("(타학년 제한없음 2차때 수강가능)").remove("(타학년 제한없음, 2차때 신청가능)").strip,
           grades: t.css("td")[5].text,
-          proffesion: t.css("td")[6].text,
+          proffesion: t.css("td")[6].text.strip,
           day: time.split("\n").map{|day|day[0]}.join("\n"),
           time: time,
           classroom: classroom,
-          validation: t.css("td")[0].text
+          validation: t.css("td")[0].text.strip
       )
     end
   end
