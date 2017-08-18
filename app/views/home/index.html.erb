@@ -9,13 +9,13 @@
         <p>현재 위치에서 가장 가까운<br><span style="font-weight:bold;">빈 강의실</span>을 찾아보세요</p>
       </div>
 
-      <div class="search">
+      <div class="search_dis">
 
-        <%= form_tag '/empty_room/result', method: :post do %>
+        <%= form_tag '/empty_room/result', method: :post, class: 'search' do %>
 
           <div class="building">
             <p>건물명</p>
-            <select name='building[number]' class="ui search dropdown" style="width:13vw; height: 5vh;" onchange='update_floor_info(this.value)'>
+            <select name='building[number]' class="ui search dropdown" style="width:266px; height: 5vh;" onchange='update_floor_info(this.value)'>
               <% Building.all.order(number: :asc).each do |b| %>
                 <option value="<%= b.number %>"><%= b.name %> (<%= b.number.to_s %>)</option>
               <% end %>
@@ -27,6 +27,7 @@
             <%= render partial: 'empty_room/floors', locals: { floors: Building.find(1).rooms.select(:floor).distinct.order(floor: :asc) } %>
           </div>
           <input type="submit" id="search_btn" value="검색하기">
+
         <% end %>
 
       </div>

@@ -4,8 +4,7 @@
   <div class="nav-bar">
 
     <%= link_to root_path do %>
-        <div class="logo">
-
+      <div class="logo">
         <svg width="35px" height="34px" viewBox="0 0 42 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
           <desc>Created with Sketch.</desc>
@@ -28,7 +27,6 @@
           </g>
         </svg>
 
-
         <svg width="105px" height="27px" viewBox="0 0 136 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="classinfo_logo">
           <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
           <desc>Created with Sketch.</desc>
@@ -43,35 +41,23 @@
             </g>
           </g>
         </svg>
-
-        </div>
+      </div>
     <% end %>
+
     <div class="menu">
 
-      <% if user_signed_in? or true %>
-
-        <%= link_to '#', class: 'icon-label', id: 'univ'  do %>
-            중앙대학교(서울) / 권태욱
-        <% end %>
-
-        <%= link_to '/func/timetable', class: 'icon-label' do %>
-            내 시간표
-        <% end %>
-
-        <%= link_to '/gonggang/index', class: 'icon-label' do %>
-          로그아웃
-        <% end %>
-
+      <% if user_signed_in? %>
+          <%= link_to '중앙대학교(서울) / ' + current_user.email, edit_user_registration_path, class: 'icon-label', id: 'univ'%>
+          <%= link_to '내 시간표', '/func/timetable', class: 'icon-label' %>
+          <%= link_to '로그아웃', destroy_user_session_path, method: :delete, class: 'icon-label' %>
+      <% else %>
+          <%= link_to '내 시간표', new_user_session_path, class: 'icon-label' %>
+          <%= link_to '로그인', new_user_session_path, class: 'icon-label' %>
       <% end %>
-
 
     </div>
 
-
   </div>
-
-
-
 
 
 
