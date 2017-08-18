@@ -18,6 +18,7 @@ class CreateLectures < ActiveRecord::Migration[5.0]
       t.integer :room_id, foreign_key: true
 
       t.integer :grade    # 1~4
+      t.integer :mynum
       t.timestamps
     end
   end

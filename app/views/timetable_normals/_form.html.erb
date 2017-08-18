@@ -10,8 +10,36 @@
       </ul>
     </div>
   <% end %>
+    <div class="field">
+      <%= f.label :이수구분 %><br>
+      <%= f.text_field :div %>
+    </div>
+    <div class="field">
+      <%= f.label :과목명 %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :학년 %><br>
+      <%= f.text_field :grades %>
+    </div>
+    <div class="field">
+      <%= f.label :요일 %><br>
+      <%= f.text_field :day %>
+    </div>
+    <div class="field">
+      <%= f.label :시간 %><br>
+      <%= f.text_field :time %>
+    </div>
+    <div class="field">
+      <%= f.label :교강사 %><br>
+      <%= f.text_field :proffesion %>
+    </div>
+    <div class="field">
+      <%= f.label :강의실 %><br>
+      <%= f.text_field :classroom %>
+    </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit (value="생성하기") %>
   </div>
 <% end %>

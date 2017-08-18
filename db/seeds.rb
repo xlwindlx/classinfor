@@ -42,87 +42,90 @@ if true
     new_room.save
 
   end
-=begin
-  # 강의들을 불러온다
+#114210
+  #215 946078 41237
   lectures = lectures_from_excel
   lectures.each do |lecture|
-    # 강의를 등록한다
-    db_lecture = Lecture.where('subjno = ? AND subjclass = ?', lecture[:subjno], lecture[:subjclass])[0]
-    if db_lecture.nil?
-      new_lecture = Lecture.new(
-          name: lecture[:name],
-          professor: lecture[:professor],
-          campus: lecture[:campus],
-          subjno: lecture[:subjno],
-          subjclass: lecture[:subjclass],
-          year: lecture[:year],
-          semaster: lecture[:semaster],
-          classify: lecture[:classify],
-          major1: lecture[:major1]
+
+    db_lecture = Lecture.where(mynum: lecture[:mynum])[0]
+    unless db_lecture
+      Lecture.create(
+        name: lecture[:name],
+        professor: lecture[:professor],
+        campus: lecture[:campus],
+
+        subjno: lecture[:subjno],
+        subjclass: lecture[:subjclass],
+
+        year: lecture[:year],
+        semaster: lecture[:semaster],
+
+        classify: lecture[:classify],
+        major1: lecture[:major1],
+        major2: lecture[:major2],
+
+        mynum: lecture[:mynum]
       )
-      new_lecture[:major2] = lecture[:major2] unless lecture[:major2].nil?
-      new_lecture.save
-      db_lecture = Lecture.where('subjno = ? AND subjclass = ?', lecture[:subjno], lecture[:subjclass])[0]
+      db_lecture = Lecture.where(mynum: lecture[:mynum])[0]
     end
 
-    # room을 등록한다
-    room = nil
-    unless lecture[:building].nil?
-      b_num = lecture[:building].to_i
-      l_num = lecture[:loc].to_i
-
-      room = Room.where('build = ? AND loc = ?', b_num, l_num)[0]
-      unless room.nil?
-        room.update_column(:room_name, lecture[:room_name]) if room[:room_name].nil?
+    # 강의를 등록했으니 방을 등록하자
+    unless lecture[:r].nil?
+      db_building = Building.where(number: lecture[:b][:building])
+      # 건물을 만든다
+      if db_building.exists?
+        db_building = db_building[0]
+        #이름을 갱신해본다
+        if db_building.name.nil? && lecture[:b][:building_name]
+          db_building.update_column(:name, lecture[:b][:building_name])
+        end
+      # 건물이 없는경우
       else
-        Building.create(number: b_num) unless Building.where(number: b_num).exists?
-        new_building_id = Building.where(number: b_num)[0].id
+        # 건물을 만든다
+        # 건물을 만들기 전에 이름이 있는지 확인해서 만든다
+        if lecture[:b][:building_name].nil?
+          Building.create(number: lecture[:b][:building])
+        else
+          Building.create(number: lecture[:b][:building], name: lecture[:b][:building_name])
+        end
+        db_building = Building.where(number: lecture[:b][:building])[0]
+      end
 
-        local_floor = 0
-        if lecture[:loc].size == 3
-          local_floor = lecture[:loc][0].to_i
-        elsif lecture[:loc].size == 4
-          local_floor = lecture[:loc][0..1].to_i
+
+      # 방을 이제 만든다 (빌딩이 있는데 방이 없을리가 없는)
+      ### puts "puts #{lecture[:r][:building]} -- #{lecture[:r][:loc1]} -- #{db_building.number}"
+      db_room = Room.where('build = ? AND loc = ?', lecture[:r][:building], lecture[:r][:loc1])
+      if db_room.exists?
+        ### puts "A"
+        db_room = db_room[0]
+      else
+        ### puts "B"
+        Room.create(building_id: db_building.id, build: lecture[:r][:building], loc: lecture[:r][:loc1])
+        ##puts "#{db_building.id} #{lecture[:r][:building]} #{lecture[:r][:loc1]}"
+        db_room = Room.where('build = ? AND loc = ?', lecture[:r][:building], lecture[:r][:loc1])[0]
+      end
+
+      ##puts "C"
+      ##puts "#{db_room}"
+
+      # 강의들에 대해서
+      unless lecture[:t].nil?
+        # 강의들에 대해서 *여러개 -< 한개
+        lecture[:t].each do |time|
+          next if time.nil?
+          db_time = TimeClass.where('room_id = ? AND week = ? AND st = ?', db_room.id, time[:week], time[:st])
+          unless db_time.exists?
+            TimeClass.create(lecture_id: db_lecture.id, room_id: db_room.id, week: time[:week], st: time[:st], fi: time[:fi])
+          end
         end
 
-        room = Room.create(
-          room_name: lecture[:room_name],
-          build: b_num,
-          loc: l_num,
-          floor: local_floor,
-          level: 2,
-          building_id: new_building_id
-        )
-      end
+      end #강의들에 대해서 끝
 
-      if db_lecture.room.nil? && !room.nil?
-        db_lecture.update_column(:room_id, room.id)
-      end
-    end
-
-    unless lecture[:time_classes].nil?
-      #puts lecture[:time_classes]
-      lecture[:time_classes].each do |time_class|
-        # 수업을 등록한다
-        db_time = db_lecture.time_classes.where('week = ? AND st = ? AND fi = ?', time_class[:yoyil], time_class[:st], time_class[:fi])[0]
-
-        if db_time.nil?
-          new_time_class = TimeClass.new(
-              lecture_id: db_lecture.id,
-              week: time_class[:yoyil],
-              st: time_class[:st],
-              fi: time_class[:fi]
-          )
-          new_time_class.room_id = room.id unless room.nil?
-          new_time_class.save!
-          #new_time_class = db_lecture.time_classes.where('week = ? AND st = ? AND fi = ?', time_class[:yoyil], time_class[:st], time_class[:fi])[0]
-        end
-      end
-    end
+    end #방이 있을 경우에 대해서 끝
 
 
-  end
-=end
+
+  end #강의들에 대해서 끝
 end
 
 #dku
