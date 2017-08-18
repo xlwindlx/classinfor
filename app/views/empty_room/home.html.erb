@@ -1,0 +1,28 @@
+<%= form_tag '/empty_room/result', method: :post do %>
+    <select name="building[number]">
+      <% Building.all.order(number: :asc).each do |b| %>
+          <option value="<%= b.number %>"><%= b.name %> (<%= b.number.to_s %>)</option>
+      <% end %>
+    </select>
+
+    <select name="room[floor]">
+      <% Building.find(1).rooms.select(:floor).distinct.order(floor: :asc).each do |f| %>
+          <option value="<%= f.floor.to_s %>"><%= f.floor.to_s %> 층</option>
+      <% end %>
+    </select>
+<% end %>
+
+
+<script>
+    $('#category_dropdown').change(function() {
+        var subcategory_url = "/get_subcategories?category_id=" + $(this).val();
+        var subcategory_select = $(this).next('select');
+
+        $.ajax({
+            url: subcategory_url,
+            success: function(data) {
+                subcategory_select.html("<option selected=selected>Select Subcategory</option>" + data);
+            }
+        });
+    });
+</script>

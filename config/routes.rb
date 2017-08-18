@@ -22,6 +22,9 @@ Rails.application.routes.draw do
 
   # TODO : make filtering search
 
+  # 빈강의실
+  get 'empty_room/home'
+
   # 두가지 옵션
   get 'search/index'
   post 'search/index'
