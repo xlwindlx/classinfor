@@ -16,6 +16,10 @@ class EmptyRoomController < ApplicationController
     render partial: 'floors', object: @floors
   end
 
+  def result
+    @result = Building.where(number: params[:building][:number].to_i)[0].rooms.where(floor: params[:floor].to_i)
+  end
+
   private
   def makefloors
 

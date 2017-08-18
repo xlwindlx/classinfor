@@ -1,0 +1,27 @@
+<% if @result.exists? %>
+  <table>
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>건물</th>
+        <th>호수</th>
+        <th>이름</th>
+        <th>부서</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @result.each_with_index do |r, i| %>
+        <tr>
+          <td><%= i + 1%></td>
+          <td><%= r.build %></td>
+          <td><%= r.loc %></td>
+          <td><%= r.room_name %></td>
+          <td><%= r.department.name %></td>
+        </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+<% else %>
+  <p>정보가 없습니다</p>
+<% end %>
