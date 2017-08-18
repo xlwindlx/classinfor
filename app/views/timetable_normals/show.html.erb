@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_timetable_normal_path(@timetable_normal) %> |
-<%= link_to 'Back', timetable_normals_path %>
+<%= render 'form', timetable_normal: @timetable_normal %>
+<%= link_to '수정', edit_timetable_normal_path(@timetable_normal) %> |
+<%= link_to '뒤로가기', timetable_normals_path %>

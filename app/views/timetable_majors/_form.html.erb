@@ -11,7 +11,44 @@
     </div>
   <% end %>
 
+    <div class="field">
+      <%= f.label :구분 %><br>
+      <%= f.text_field :div %>
+    </div>
+    <div class="field">
+      <%= f.label :과목명 %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :학년 %><br>
+      <%= f.number_field :grade %>
+    </div>
+    <div class="field">
+      <%= f.label :학점 %><br>
+      <%= f.number_field :grades %>
+    </div>
+    <div class="field">
+      <%= f.label :전공명 %><br>
+      <%= f.text_field :subject %>
+    </div>
+    <div class="field">
+      <%= f.label :교강사명 %><br>
+      <%= f.text_field :proffesion %>
+    </div>
+    <div class="field">
+      <%= f.label :요일 %><br>
+      <%= f.text_field :day %>
+    </div>
+    <div class="field">
+      <%= f.label :시간 %><br>
+      <%= f.text_field :time %>
+    </div>
+    <div class="field">
+      <%= f.label :강의실 %><br>
+      <%= f.text_field :classroom %>
+    </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit (value="생성하기") %>
   </div>
 <% end %>

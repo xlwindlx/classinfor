@@ -1,69 +1,82 @@
 <header class="main-header">
-  <!--삼등분|(1)|2|3|-->
-  <div class="main-box-third log-stat">
-    <ul class="log-stat">
-      <% if user_signed_in? %>
-          <li><%= current_user.email %>님</li>
-          <li><%= link_to'로그아웃', destroy_user_session_path %></li>
-      <% else %>
-          <li><%= link_to new_user_registration_path, class: 'icon-label' do %>
-                <i class="fa fa-envelope-o" aria-hidden="true"></i> 가입하기
-            <% end %></li>
-          <li><%= link_to new_user_session_path, class: 'icon-label' do %>
-                <i class="fa fa-user-o" aria-hidden="true"></i> 로그인
-            <% end %></li>
+
+
+  <div class="nav-bar">
+
+    <div class="logo">
+
+    <svg width="35px" height="34px" viewBox="0 0 42 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+      <desc>Created with Sketch.</desc>
+      <defs></defs>
+      <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="main" transform="translate(-89.000000, -55.000000)">
+          <g id="Group-2" transform="translate(89.000000, 53.000000)">
+            <g id="logo" transform="translate(0.000000, 2.000000)">
+              <g id="Group">
+                <rect id="Rectangle" fill="#FF0000" x="0" y="0" width="27.9570552" height="5.68821293"></rect>
+                <rect id="Rectangle-Copy" fill="#2000FF" x="0" y="5.68821293" width="14.0429448" height="5.68821293"></rect>
+                <rect id="Rectangle-Copy-2" fill="#980DEB" x="0" y="11.2471483" width="42" height="5.68821293"></rect>
+                <rect id="Rectangle-Copy-3" fill="#8AD000" x="0" y="16.9353612" width="34.7852761" height="5.68821293"></rect>
+                <rect id="Rectangle-Copy-4" fill="#FDFF00" x="0" y="22.6235741" width="21" height="5.68821293"></rect>
+                <rect id="Rectangle-Copy-5" fill="#71D0EF" x="0" y="28.3117871" width="27.9570552" height="5.68821293"></rect>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+
+
+    <svg width="105px" height="27px" viewBox="0 0 136 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="classinfo_logo">
+      <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+      <desc>Created with Sketch.</desc>
+      <defs></defs>
+      <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="35" font-family="AppleSDGothicNeo-ExtraBold, Apple SD Gothic Neo" font-weight="600">
+        <g id="main" transform="translate(-151.000000, -57.000000)" fill="#444444">
+          <g id="Group-2" transform="translate(89.000000, 53.000000)">
+            <text id="Classinfo">
+              <tspan x="61" y="32">Classinfo</tspan>
+            </text>
+          </g>
+        </g>
+      </g>
+    </svg>
+
+    </div>
+
+    <div class="menu">
+
+      <% if user_signed_in? or true %>
+
+      <%= link_to '#', class: 'icon-label', id: 'univ'  do %>
+          중앙대학교(서울)/권태욱
       <% end %>
-    </ul>
-  </div>
-  <!--삼등분|1|(2)|3|-->
-  <div class="main-box-third box-logo">
-    <%= link_to root_path do %>
-        <div class="small-color-bar">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <h1 class="logo">Classinfo </h1>
-    <% end %>
-    <p class="version">beta 1.0</p>
-  </div>
-  <!--삼등분|1|2|(3)|-->
-  <div class="main-box-third func">
-    <ul class="nav-ul">
-      <li><%= link_to '/gonggang/index', class: 'icon-label' do %>
-            <i class="fa fa-pencil-square-o" aria-hidden="true"></i> 공강(현재빈강의실)
-        <% end %></li>
-      <li><%= link_to '/search/index', class: 'icon-label' do %>
-        <i class="fa fa-search" aria-hidden="true"></i> 강의실대여
-      <% end %></li>
-    </ul>
-  </div>
-</header>
-<div class="blue-bar">
-  <% if user_signed_in? or true %>
-  <div class="left">
-    <p>
-      <%= link_to '#', class: 'go-school' do %>
-        (학교로고) DKU CAU
-      <% end %>
+
       <%= link_to '/func/timetable', class: 'icon-label' do %>
-        <i class="fa fa-calendar" aria-hidden="true"> 내시간표</i>
+          내시간표
       <% end %>
-      <%= link_to '#', class: 'icon-label'  do %>
-        <i class="fa fa-user-circle" aria-hidden="true"> 정보수정</i>
+
+      <%= link_to '/gonggang/index', class: 'icon-label' do %>
+        빈 강의실 검색
       <% end %>
-    </p>
+
+      로그아웃
+
+      <% end %>
+
+
+    </div>
+
+
   </div>
-  <div class="right">
-    <%= link_to '/gonggang/index', class: 'icon-label' do %>
-      <i class="fa fa-pencil-square-o" aria-hidden="true"> 빈강 </i>
-    <% end %>
-    <%= link_to '/search/index', class: 'icon-label' do %>
-      <i class="fa fa-search" aria-hidden="true"> 강의실 </i>
-    <% end %>
-  </div>
-  <% end %>
-</div>
+
+
+
+
+
+
+</header>
+
+
+
