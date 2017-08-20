@@ -16,7 +16,11 @@
           <td><%= r.build %></td>
           <td><%= r.loc %></td>
           <td><%= r.room_name %></td>
-          <td><%= r.department.name %></td>
+          <% if r.department %>
+            <td><%= r.department.name %></td>
+          <% else %>
+            <td>-</td>
+          <% end %>
         </tr>
       <% end %>
 
