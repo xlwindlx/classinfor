@@ -1,0 +1,18 @@
+div.login-container {
+  height: 50%
+}
+form.login-form {
+  width: 100%;
+  hegith: 50%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  div {
+    padding: 1em 0;
+    a {
+      padding: 0 1em;
+    }
+  }
+}
